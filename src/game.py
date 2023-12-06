@@ -15,10 +15,13 @@ class Game:
     current_player = ''
     active_game = False
 
+    @classmethod
     async def create(self, ws: WebSocket):
+        self = cls()
         player = await self.create_player(ws)
         self.players.append(player)
         self.current_player = await player.get_state()
+        return self
 
     async def create_player(self, ws: WebSocket):
         return Player(ws, 'x')

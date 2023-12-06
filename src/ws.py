@@ -4,6 +4,7 @@ import typing
 
 
 class WSGame(WebSocketEndpoint):
+
     async def on_connect(self, websocket: WebSocket) -> None:
         await websocket.accept()
 
